@@ -18,7 +18,9 @@ pthread_t TSK_OpenCV;
 /*Declare and start Threads*/
 int main(void)
 {
-    pthread_create(tidSensors, NULL, TSK_Sensors, NULL);//Start Sensors_TSK
+    printf("Creating Thread\n");
+    pthread_create(&tidSensors, NULL, &TSK_Sensors, NULL);//Start Sensors_TSK
+    pthread_join(tidSensors, NULL);
     //Start Motors_TSK
     //Start Open_CV_TSK
 }
