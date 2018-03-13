@@ -21,7 +21,7 @@ pthread_t tidSensors;
 Prototypes of Local Functions
 */
 
-void TSK_Sensors(void const *argument);
+void *TSK_Sensors(void const *argument);
 
 /*
 Local Functions
@@ -33,7 +33,7 @@ Function TSK_Sensors
 @Description Sensor Task to read sensors
 */
 
-void TSK_Sensors(void const *argument)
+void *TSK_Sensors(void const *argument)
 {
     char user_input;
 
