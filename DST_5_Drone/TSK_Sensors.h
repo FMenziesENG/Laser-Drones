@@ -14,7 +14,7 @@ extern pthread_t tidSensors;
 Prototypes of Local Functions
 */
 
-void TSK_Sensors(void const *argument);
+void *TSK_Sensors(void const *argument);
 
 
 #endif // TSK_Sensors_H
