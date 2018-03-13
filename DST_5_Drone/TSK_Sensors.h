@@ -2,6 +2,8 @@
 #ifndef TSK_Sensors_H
 #define TSK_Sensors_H
 
+#include <pthread.h>
+
 /*
 Exported Variables
 */
