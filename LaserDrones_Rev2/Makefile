@@ -3,9 +3,9 @@ CC2=gcc
 
 TARGET = Drone_Start
 
-INC = -lwiringPi -LTSK_Motors -LTSK_Proximity -LTSK_Stop
+INC = -lwiringPi -LTSK_Motors -LTSK_Proximity -LTSK_Stop -LTSK_Interface
 
-Proj_Dir = /home/pi/Laser-Drones/LaserDrones_Rev1
+Proj_Dir = /home/pi/Laser-Drones/LaserDrones_Rev2
 
 INCLUDES = \
 	-I$(Proj_Dir) \
