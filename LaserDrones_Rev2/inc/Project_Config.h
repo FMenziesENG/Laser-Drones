@@ -1,6 +1,8 @@
 #ifndef Project_Config_H
 #define Project_Config_H
 
-//Motor Driver Channels
+#define OFFTIME 30000
+#define SWITCHPIN 10
+
 
 #endif

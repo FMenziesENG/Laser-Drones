@@ -7,7 +7,7 @@
 #include "vl53l0x_platform.h"
 
 
-void TSK_Proximity();
+extern void TSK_Proximity();
 
 extern int Proximity;
 
