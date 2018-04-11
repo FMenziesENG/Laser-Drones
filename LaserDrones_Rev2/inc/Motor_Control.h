@@ -16,7 +16,7 @@ extern int Sel; //Variable used for Motor Indexing
 
 //---------------Motor Control Structures-----
 
-extern struct Motors
+struct Motors
 {
 	const char *Name;
 	int Setting;

@@ -30,6 +30,8 @@ extern struct Motors Up_Motors;
 extern struct Motors Down_Motors;
 extern struct Motors Clockwise_Motors;
 extern struct Motors Anticlockwise_Motors;
+extern struct Motors Selected_Motors;
+extern struct Motors Old_Motors;
 
 int Sel;
 
