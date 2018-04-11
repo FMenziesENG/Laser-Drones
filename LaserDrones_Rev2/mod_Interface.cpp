@@ -53,10 +53,12 @@ int Sel;
 
 const char *print_Init(int Flag);
 const char *print_Motor_Selection(uint16_t Motor_Selection);
+
 Motors Get_Motors(char input);
 void Get_Motor_Setting(char input);
 void Check_Motor_Update(Motors Check_Motors);
 void Update_Motor_Setting(int New_Setting, int Old_Setting_Index);
+
 Motors No_Motors = {
 	"No Motors Selected",
 	0,
@@ -179,35 +181,7 @@ const char *print_Init(int Flag)
 	}
 
 }
-/*
-const char *print_Motor_Selection(uint16_t Channels)
-{
 
-	if(Channels == No_Motors)
-	{
-		return "No_Motors";
-	}else
-
-	if(Motor_Selection == Up_Motors)
-	{
-		return "Up_Motors";
-	}else
-
-	if(Motor_Selection == Down_Motors)
-	{
-		return "Down_Motors";
-	}else
-
-	if(Motor_Selection == Clockwise_Motors)
-	{
-		return "Clockwise_Motors";
-	}else
-
-	if(Motor_Selection == Anticlockwise_Motors)
-	{
-		return "Anticlockwise_Motors";
-	}
-}*/
 
 Motors Get_Motors(char input)
 {

@@ -6,6 +6,7 @@
 #include "TSK_Stop.h"
 #include "TSK_Proximity.h"
 #include "TSK_Motors.h"
+#inlcude "Motor_Control.h"
 
 //This thread prints data to the screen and takes input from the screen for debugging purposes
 
@@ -43,7 +44,9 @@ const char *print_Init(int Flag);
 
 void TSK_Interface()
 {
-	TSK_Interface_Stop_Flag = 0;
+	TSK_Interface_Stop_Flag = 0; //Tell TSK_Stop that Interface has Initialised
+	char input;
+	
 	//Setup curses.h
 	initscr();
 	cbreak();
@@ -53,8 +56,12 @@ void TSK_Interface()
 
 	while(Stop_TSKS == 'N')
 	{
+		input = getch();
+		Selected_Motors = Get_Motors(input);
+		Get_Motor_Setting(input);
+		Update_Motor_Setting(Selected_Motors.Setting, Sel);
 		//End Program Command
-		if(getch() == ' ') //to end program press space bar
+		if(input == ' ') //to end program press space bar
 		{
 			Interface_END = 'Y';
 		}
@@ -72,6 +79,8 @@ void TSK_Interface()
 			"Height: %i\n"
 			"------------TSK_Motors----------\n"
 			"TSK_Motors: %s\n"
+			"Motor Selection: %s\n"
+			"Motor Setting(0-1000): %i\n"
 			"------------TSK_IMU----------\n"
 			"TSK_IMU: %s\n"
 			"Roll: %f\n"
@@ -88,6 +97,8 @@ void TSK_Interface()
 				print_Init(TSK_Proximity_Init),
 				Proximity,
 				print_Init(TSK_Motors_Init),
+				Selected_Motors.Name,
+				Selected_Motors.Setting,
 				print_Init(TSK_IMU_Init),
 				Roll,
 				Pitch,
