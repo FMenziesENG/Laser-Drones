@@ -1,5 +1,47 @@
 #include "Motor_Control.h"
 
+
+//Struct Definitions
+Motors No_Motors = {
+	"No Motors Selected",
+	0,
+	No_Motors_Channels
+};
+
+Motors Up_Motors = {
+	"Up Motors Selected",
+	0,
+	Up_Motors_Channels
+};
+
+
+Motors Down_Motors = {
+	"Down Motors Selected",
+	0,
+	Down_Motors_Channels
+};
+
+
+Motors Clockwise_Motors = {
+	"Clockwise Motors Selected",
+	0,
+	Clockwise_Motors_Channels
+};
+
+
+Motors Anticlockwise_Motors = {
+	"Anticlockwise Motors Selected",
+	0,
+	Anticlockwise_Motors_Channels
+};
+
+Motors Selected_Motors = No_Motors;
+Motors Old_Motors = Selected_Motors;
+
+//Array of Motor Settings Structs
+Motors Motor_Choices[5] = {No_Motors, Up_Motors, Down_Motors, Clockwise_Motors, Anticlockwise_Motors};
+
+
 //Motor Control Function Declarations
 
 Motors Get_Motors(char input)

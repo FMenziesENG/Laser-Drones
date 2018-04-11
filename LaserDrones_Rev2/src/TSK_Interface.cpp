@@ -25,6 +25,14 @@
 // 'E' - Ends Program
 //----------External Variables
 
+extern struct Motors No_Motors;
+extern struct Motors Up_Motors;
+extern struct Motors Down_Motors;
+extern struct Motors Clockwise_Motors;
+extern struct Motors Anticlockwise_Motors;
+
+int Sel;
+
 int TSK_Stop_Init;
 int TSK_Stop_wiringPiSetup;
 int TSK_Stop_Shutdown;
