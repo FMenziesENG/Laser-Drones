@@ -1,4 +1,5 @@
 #include "TSK_Motors.h"
+#include "Motor_Control.h"
 #include "TSK_Stop.h"
 #include "TSK_Interface.h"
 #include "Project_Config.h"
@@ -14,10 +15,10 @@ void Update_Motors();
 //------------External Variables ---------------
 const int MAX_PWM = 3000;
 const int MIN_PWM = 1500;
-int PWM_Table[8] = {0,0,0,0,0,0,0,0};
-char Motor_Update_Flag[8] = {0,0,0,0,0,0,0,0};
+//int PWM_Table[8] = {0,0,0,0,0,0,0,0};
+int Motor_Update_Flag = 0;
 int TSK_Motors_Stop_Flag = 1;
-
+extern struct Motors Selected_Motors;
 PCA9685 motors(1,0x40); //Setup Comms to Motor Driver
 
 
@@ -109,9 +110,9 @@ void Update_Motors()
 {
 	for (int i = 0; i < 8; i++)
 	{
-		if ((Motor_Update_Flag && 0x1 << i) == 1)
+		if (Selected_Motors.Driver_Channels & (0b1 << i))
 		{
-			motors.setPWM(i+1, PWM_Table[i]);
+			motors.setPWM(i+1, Selected_Motors.Setting);
 		}
 	}
 

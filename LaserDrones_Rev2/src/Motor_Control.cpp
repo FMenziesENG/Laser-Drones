@@ -1,5 +1,5 @@
 #include "Motor_Control.h"
-
+#include "TSK_Motors.h"
 
 //Struct Definitions
 Motors No_Motors = {
@@ -91,5 +91,9 @@ void Update_Motor_Setting(int New_Setting, int Motor_Memory_Index)	//Update Moto
 	{
 		Old_Motors.Setting = New_Setting;			//Place last selected PWM Setting into temporary variable
 		Motor_Choices[Motor_Memory_Index] = Old_Motors;		//Update Memory Struct with Temporary Struct
+		Motor_Update_Flag = 1;
+	}else
+	{
+		Motor_Update_Flag = 0;
 	}
 }
