@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Project_Config.h"
 #include <unistd.h>
+// ALL TSKS WHICH WANT TO BE TURNED OFF AFTER CODE END MUST BE IMPLEMENTED HERE
 
 //----------External Variables
 
@@ -14,13 +15,6 @@ char END_Prog = 'N';
 char Interface_END = 'N';
 
 int ShutdownPin = SWITCHPIN;
-
-int TSK_Motors_Stop_Flag = 0;
-int TSK_Control_Stop_Flag = 1;
-int TSK_Proximity_Stop_Flag = 0;
-int TSK_Camera_Stop_Flag = 1;
-int TSK_IMU_Stop_Flag = 1;
-int TSK_Interface_Stop_Flag = 0;
 
 //----------Local Functions
 void Stop_TSKS_Check();
@@ -43,6 +37,8 @@ void TSK_Stop()
 
 	while (END_Prog == 'N')
 	{
+
+		while (Tasks_Initialised == 0){} //Initialised in main after threads activated
 //		Stop_TSKS_Check();
 
 		if ( Stop_TSKS == 'Y' || Interface_END == 'Y')	//shutdown code and power off raspberry pi if button pressed
@@ -50,7 +46,7 @@ void TSK_Stop()
 
 			while (END_Prog == 'N')
 			{
-				if (Stop_TSKS == 'Y' && TSK_Motors_Stop_Flag == 1 && TSK_Control_Stop_Flag == 1 &&
+				if (Stop_TSKS == 'Y' && TSK_Motors_Stop_Flag == 1 &&
 					TSK_Proximity_Stop_Flag == 1 && TSK_Camera_Stop_Flag == 1 &&
 					TSK_IMU_Stop_Flag==1 && TSK_Interface_Stop_Flag==1)
 				{
@@ -59,7 +55,7 @@ void TSK_Stop()
 //					usleep(OFFTIME);
 					Shutdown = 'Y'; //Once all threads close return to main and poweroff
 				}else
-				if (Interface_END == 'Y' && TSK_Motors_Stop_Flag == 1 && TSK_Control_Stop_Flag == 1 &&
+				if (Interface_END == 'Y' && TSK_Motors_Stop_Flag == 1 &&
 					TSK_Proximity_Stop_Flag == 1 && TSK_Camera_Stop_Flag == 1 &&
 					TSK_IMU_Stop_Flag==1)
 				{

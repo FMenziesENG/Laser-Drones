@@ -10,5 +10,6 @@
 extern void TSK_Proximity();
 
 extern int Proximity;
+extern int TSK_Proximity_Stop_Flag;
 
 #endif

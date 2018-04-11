@@ -36,12 +36,14 @@ int TSK_Proximity_Init;
 float Roll = 0.0;
 float Pitch = 0.0;
 float Yaw = 0.0;
+int TSK_Interface_Stop_Flag = 1;
 
 
 const char *print_Init(int Flag);
 
 void TSK_Interface()
 {
+	TSK_Interface_Stop_Flag = 0;
 	//Setup curses.h
 	initscr();
 	cbreak();

@@ -11,6 +11,8 @@ extern char Shutdown;
 extern char Interface_END;
 extern char END_Prog;
 
+extern int Tasks_Initialised; //Initialised in main
+
 //StopFlags- 0, Do not stop. 1, TSK has stopped and is ready for shutdown
 extern int TSK_Motors_Stop_Flag;
 extern int TSK_Control_Stop_Flag;

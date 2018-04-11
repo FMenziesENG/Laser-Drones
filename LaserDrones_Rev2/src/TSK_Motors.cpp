@@ -16,14 +16,14 @@ const int MAX_PWM = 3000;
 const int MIN_PWM = 1500;
 int PWM_Table[8] = {0,0,0,0,0,0,0,0};
 char Motor_Update_Flag[8] = {0,0,0,0,0,0,0,0};
-
+int TSK_Motors_Stop_Flag = 1;
 
 PCA9685 motors(1,0x40); //Setup Comms to Motor Driver
 
 
 void TSK_Motors()
 {
-
+	TSK_Motors_Stop_Flag = 0;
 	TSK_Motors_Init = 1;
 
 	//Initialise Motor Variables

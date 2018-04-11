@@ -12,4 +12,6 @@ extern int PWM_Table[8] ;
 //Motor update request variable
 extern char Motor_Update_Flag[8]; //binary number that contains motors that need updating
 
+extern int TSK_Motors_Stop_Flag;
+
 #endif

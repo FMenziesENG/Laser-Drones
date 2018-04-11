@@ -16,4 +16,6 @@ extern int TSK_Motors_Init;
 extern int TSK_IMU_Init;
 extern int TSK_Camera_Init;
 
+extern int TSK_Interface_Stop_Flag;
+
 #endif
