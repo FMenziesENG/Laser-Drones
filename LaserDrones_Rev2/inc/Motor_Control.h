@@ -1,6 +1,7 @@
 #ifndef Motor_Control_H
 #define Motor_Control_H
 
+#include <stdint.h>
 
 //---------------Definitions--------------
 #define No_Motors_Channels 0b00000000
@@ -9,16 +10,9 @@
 #define Clockwise_Motors_Channels 0b00001100
 #define Anticlockwise_Motors_Channels 0b00000011
 
-//---------------Motor Control Function Definitions--------------
-
-Motors Get_Motors(char input); //
-void Get_Motor_Setting(char input);
-void Check_Motor_Update(Motors Check_Motors);
-void Update_Motor_Setting(int New_Setting, int Old_Setting_Index);
-
 //---------------Motor Control Variable Definitions--------------
 
-int Sel; //Variable used for Motor Indexing
+extern int Sel; //Variable used for Motor Indexing
 
 //---------------Motor Control Structures-----
 
@@ -67,5 +61,11 @@ Motors Old_Motors = Selected_Motors;
 
 Motors Motor_Choices[5] = {No_Motors, Up_Motors, Down_Motors, Clockwise_Motors, Anticlockwise_Motors};
 
+//---------------Motor Control Function Definitions--------------
+
+Motors Get_Motors(char input); //
+void Get_Motor_Setting(char input);
+void Check_Motor_Update(Motors Check_Motors);
+void Update_Motor_Setting(int New_Setting, int Old_Setting_Index);
 
 #endif

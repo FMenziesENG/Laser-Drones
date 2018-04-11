@@ -3,7 +3,7 @@ CC2=gcc
 
 TARGET = Drone_Start
 
-INC = -lwiringPi -LTSK_Motors -LTSK_Proximity -LTSK_Stop -LTSK_Interface
+INC = -lwiringPi -LTSK_Motors -LTSK_Proximity -LTSK_Stop -LTSK_Interface -LMotor_Control
 
 Proj_Dir = /home/pi/Laser-Drones/LaserDrones_Rev2
 
@@ -25,6 +25,7 @@ SRCcpp =\
 	TSK_Motors.cpp \
 	TSK_Proximity.cpp \
 	TSK_Interface.cpp \
+	Motor_Control.cpp \
 	I2C.cpp \
 	PCA9685.cpp \
 
@@ -54,6 +55,9 @@ TSK_Proximity.o: TSK_Proximity.cpp
 	$(CC) -c $(INC) $(INCLUDES) $^ -o $@
 
 TSK_Motors.o: TSK_Motors.cpp
+	$(CC) -c $(INC) $(INCLUDES) $^ -o $@
+
+Motor_Control.o: Motor_Control.cpp
 	$(CC) -c $(INC) $(INCLUDES) $^ -o $@
 
 I2C.o: I2C.cpp

@@ -6,7 +6,7 @@
 #include "TSK_Stop.h"
 #include "TSK_Proximity.h"
 #include "TSK_Motors.h"
-#inlcude "Motor_Control.h"
+#include "Motor_Control.h"
 
 //This thread prints data to the screen and takes input from the screen for debugging purposes
 
@@ -46,7 +46,7 @@ void TSK_Interface()
 {
 	TSK_Interface_Stop_Flag = 0; //Tell TSK_Stop that Interface has Initialised
 	char input;
-	
+
 	//Setup curses.h
 	initscr();
 	cbreak();
