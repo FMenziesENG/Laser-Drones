@@ -67,8 +67,8 @@ void TSK_Interface()
 	while(Stop_TSKS == 'N')
 	{
 		input = getch();
-		Selected_Motors = Get_Motors(input);
-		Get_Motor_Setting(input);
+		Selected_Motors = Get_Motors(input); //Returns Sel
+		Get_Motor_Setting(input);			//Sets Selected_Motors.Setting to setting of input motor selection
 		Update_Motor_Setting(Selected_Motors.Setting, Sel);
 		//End Program Command
 		if(input == ' ') //to end program press space bar
@@ -77,28 +77,29 @@ void TSK_Interface()
 		}
 		erase();	//clears screen
 		//Print Data to screen, if data changes then change message to write
-		printw("------------Setup-------------\n"
+		printw(
+			"------------Setup-------------\n"
 			"------------TSK_Stop----------\n"
 			"TSK_Stop: %s\n"
 			"wiring_PiSetup: %s\n"
 			"Shutdown: %s\n"
 			"End Session: %s\n"
 			"Threads Ended: %s\n"
-			"------------TSK_Proximity----------\n"
+			"------------TSK_Proximity-----\n"
 			"TSK_Proximity: %s\n"
 			"Height: %i\n"
-			"------------TSK_Motors----------\n"
+			"------------TSK_Motors--------\n"
 			"TSK_Motors: %s\n"
 			"Motor Selection: %s\n"
 			"Motor Setting(0-1000): %i\n"
-			"------------TSK_IMU----------\n"
+			"------------TSK_IMU-----------\n"
 			"TSK_IMU: %s\n"
 			"Roll: %f\n"
 			"Pitch: %f\n"
 			"Yaw: %f\n"
-			"------------TSK_Camera----------\n"
+			"------------TSK_Camera--------\n"
 			"TSK_Camera: %s\n"
-			"---------------------------------\n",
+			"------------------------------\n",
 				print_Init(TSK_Stop_Init),
 				print_Init(TSK_Stop_wiringPiSetup),
 				print_Init(TSK_Stop_Shutdown),

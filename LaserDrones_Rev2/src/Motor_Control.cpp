@@ -10,28 +10,28 @@ Motors No_Motors = {
 
 Motors Up_Motors = {
 	"Up Motors Selected",
-	0,
+	200,
 	Up_Motors_Channels
 };
 
 
 Motors Down_Motors = {
 	"Down Motors Selected",
-	0,
+	200,
 	Down_Motors_Channels
 };
 
 
 Motors Clockwise_Motors = {
 	"Clockwise Motors Selected",
-	0,
+	200,
 	Clockwise_Motors_Channels
 };
 
 
 Motors Anticlockwise_Motors = {
 	"Anticlockwise Motors Selected",
-	0,
+	200,
 	Anticlockwise_Motors_Channels
 };
 
@@ -75,11 +75,11 @@ void Get_Motor_Setting(char input)
 
 	if(input == 'i')
 	{
-		Selected_Motors.Setting += 100;
+		Selected_Motors.Setting += 30;
 	}else
 	if(input == 'o')
 	{
-		Selected_Motors.Setting -= 100;
+		Selected_Motors.Setting -= 30;
 	}
 }
 
