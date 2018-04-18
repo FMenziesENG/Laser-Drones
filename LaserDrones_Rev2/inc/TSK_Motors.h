@@ -14,5 +14,6 @@ extern void TSK_Motors(); //Motor Thread Name
 
 extern int TSK_Motors_Stop_Flag;
 extern int Motor_Update_Flag;
+extern bool Cal_Motors_Flag;
 
 #endif

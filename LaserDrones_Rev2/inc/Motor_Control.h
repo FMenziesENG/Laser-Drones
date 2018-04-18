@@ -4,11 +4,11 @@
 #include <stdint.h>
 
 //---------------Definitions--------------
-#define No_Motors_Channels 0b00000000
-#define Up_Motors_Channels 0b11000000
-#define Down_Motors_Channels 0b00110000
-#define Clockwise_Motors_Channels 0b00001100
-#define Anticlockwise_Motors_Channels 0b00000011
+#define No_Motors_Channels            0b000000000000
+#define Up_Motors_Channels            0b110000000000
+#define Down_Motors_Channels          0b001100000000
+#define Clockwise_Motors_Channels     0b000000001100
+#define Anticlockwise_Motors_Channels 0b000000000011
 
 //---------------Motor Control Variable Definitions--------------
 
@@ -31,5 +31,4 @@ Motors Get_Motors(char input); //
 void Get_Motor_Setting(char input);
 void Check_Motor_Update(Motors Check_Motors);
 void Update_Motor_Setting(int New_Setting, int Old_Setting_Index);
-
 #endif

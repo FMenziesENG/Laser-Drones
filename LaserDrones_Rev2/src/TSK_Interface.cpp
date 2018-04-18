@@ -2,6 +2,7 @@
 #include <string>
 #include <unistd.h>
 
+#include "PCA9685.h"
 #include "TSK_Interface.h"
 #include "TSK_Stop.h"
 #include "TSK_Proximity.h"
@@ -48,7 +49,7 @@ float Roll = 0.0;
 float Pitch = 0.0;
 float Yaw = 0.0;
 int TSK_Interface_Stop_Flag = 1;
-
+//bool Cal_Motors_Flag;
 
 const char *print_Init(int Flag);
 
@@ -57,6 +58,8 @@ void TSK_Interface()
 	TSK_Interface_Stop_Flag = 0; //Tell TSK_Stop that Interface has Initialised
 	char input;
 
+	PCA9685 PWMs(1,0x40);;
+
 	//Setup curses.h
 	initscr();
 	cbreak();
@@ -64,6 +67,8 @@ void TSK_Interface()
 	scrollok(stdscr, TRUE);
 	nodelay(stdscr, TRUE);
 
+	if(Cal_Motors_Flag != true)
+	{
 	while(Stop_TSKS == 'N')
 	{
 		input = getch();
@@ -92,6 +97,14 @@ void TSK_Interface()
 			"TSK_Motors: %s\n"
 			"Motor Selection: %s\n"
 			"Motor Setting(0-1000): %i\n"
+			"Motor 1 PWM: %i\n"
+			"Motor 2 PWM: %i\n"
+			"Motor 3 PWM: %i\n"
+			"Motor 4 PWM: %i\n"
+			"Motor 5 PWM: %i\n"
+			"Motor 6 PWM: %i\n"
+			"Motor 7 PWM: %i\n"
+			"Motor 8 PWM: %i\n"
 			"------------TSK_IMU-----------\n"
 			"TSK_IMU: %s\n"
 			"Roll: %f\n"
@@ -110,6 +123,14 @@ void TSK_Interface()
 				print_Init(TSK_Motors_Init),
 				Selected_Motors.Name,
 				Selected_Motors.Setting,
+				PWMs.getPWM(1),
+				PWMs.getPWM(2),
+				PWMs.getPWM(3),
+				PWMs.getPWM(4),
+				PWMs.getPWM(9),
+				PWMs.getPWM(10),
+				PWMs.getPWM(11),
+				PWMs.getPWM(12),
 				print_Init(TSK_IMU_Init),
 				Roll,
 				Pitch,
@@ -120,6 +141,7 @@ void TSK_Interface()
 	endwin();
 	erase();
 	TSK_Interface_Stop_Flag = 1;
+	}
 }
 
 const char *print_Init(int Flag)
