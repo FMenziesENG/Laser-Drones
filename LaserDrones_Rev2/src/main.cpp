@@ -26,7 +26,7 @@ int main()
 	std::thread ID_Stop(TSK_Stop);    //Initialise Stop Task
 	if (Stop_TSKS == 'N')
 	{
-//		std::thread ID_Interface(TSK_Interface);
+		std::thread ID_Interface(TSK_Interface);
 		std::thread ID_Motors(TSK_Motors);
 		//std::thread ID_Control(TSK_Control);
 		//std::thread ID_Prox(TSK_Proximity);
@@ -34,7 +34,7 @@ int main()
 		Tasks_Initialised = 1; //Tell TSK_Stop that all threads are all running
 		
 		//dont return to main unless threads end
-//		ID_Interface.join();
+		ID_Interface.join();
 		ID_Motors.join();
 		//ID_Prox.join();
 		ID_Stop.join();

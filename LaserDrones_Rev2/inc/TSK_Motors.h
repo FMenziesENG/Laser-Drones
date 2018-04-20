@@ -4,7 +4,7 @@
 //-------------------Exported Functions-----------------------
 
 extern void TSK_Motors(); //Motor Thread Name
-
+//extern void Arm_Motor(int channel);
 //-------------------Exported Variables-----------------------
 //Motor PWM Variables 0-4095 per channel
 //extern int PWM_Table[8] ;
@@ -14,6 +14,5 @@ extern void TSK_Motors(); //Motor Thread Name
 
 extern int TSK_Motors_Stop_Flag;
 extern int Motor_Update_Flag;
-extern bool Cal_Motors_Flag;
-
+extern int Arm_Motor_Flag;
 #endif
