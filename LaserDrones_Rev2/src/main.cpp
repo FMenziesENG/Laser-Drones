@@ -29,14 +29,14 @@ int main()
 		std::thread ID_Interface(TSK_Interface);
 		std::thread ID_Motors(TSK_Motors);
 		//std::thread ID_Control(TSK_Control);
-		//std::thread ID_Prox(TSK_Proximity);
+		std::thread ID_Prox(TSK_Proximity);
 
 		Tasks_Initialised = 1; //Tell TSK_Stop that all threads are all running
 		
 		//dont return to main unless threads end
 		ID_Interface.join();
 		ID_Motors.join();
-		//ID_Prox.join();
+		ID_Prox.join();
 		ID_Stop.join();
 	}
 
