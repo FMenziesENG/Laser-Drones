@@ -17,28 +17,34 @@ VL53L0X_Error WaitStopCompleted(VL53L0X_DEV Dev);
 
 void TSK_Proximity()
 {
-	
-	///////////////////////////////
-	TSK_Proximity_Stop_Flag = 0;
-	int i;
-	int Proximity_sub;
-	TSK_Proximity_Init = 1;
-	
+
+    ///////////////////////////////
+    TSK_Proximity_Stop_Flag = 0;
+    TSK_Proximity_Init = 1;
+
+
+    int sumProximity=0, subProximity=0;
+    uint32_t measurement;
+    uint32_t no_of_measurements = 5;
+    uint16_t* pResults = (uint16_t*)malloc(sizeof(uint16_t) * no_of_measurements);
+
+
+
 /////SETUP DO NOT CHANGE//////////////////////////
-	VL53L0X_Error Status = VL53L0X_ERROR_NONE;
-	VL53L0X_Dev_t MyDevice;
-	VL53L0X_Dev_t *pMyDevice = &MyDevice;
-	
-	pMyDevice->I2cDevAddr = 0x29;
+    VL53L0X_Error Status = VL53L0X_ERROR_NONE;
+    VL53L0X_Dev_t MyDevice;
+    VL53L0X_Dev_t *pMyDevice = &MyDevice;
 
-	pMyDevice->fd = VL53L0X_i2c_init((char*)"/dev/i2c-1", pMyDevice->I2cDevAddr);//choose between i2c-0 and i2c-1; On the raspberry pi zero, i2c-1 are pins 2 and 3
+    pMyDevice->I2cDevAddr = 0x29;
 
-	if(Status == VL53L0X_ERROR_NONE)
+    pMyDevice->fd = VL53L0X_i2c_init((char*)"/dev/i2c-1", pMyDevice->I2cDevAddr);//choose between i2c-0 and i2c-1; On the raspberry pi zero, i2c-1 are pins 2 and 3
+
+    if(Status == VL53L0X_ERROR_NONE)
     {
         Status = VL53L0X_DataInit(&MyDevice); // Data initialization
     }
 
-	
+
     VL53L0X_RangingMeasurementData_t    RangingMeasurementData;
     VL53L0X_RangingMeasurementData_t   *pRangingMeasurementData    = &RangingMeasurementData;
 
@@ -46,11 +52,11 @@ void TSK_Proximity()
     uint8_t isApertureSpads;
     uint8_t VhvSettings;
     uint8_t PhaseCal;
-	
-	if(Status == VL53L0X_ERROR_NONE)
+
+    if(Status == VL53L0X_ERROR_NONE)
     {
 //        printf ("Call of VL53L0X_StaticInit\n");
-        Status = VL53L0X_StaticInit(pMyDevice); // Device Initialization
+    Status = VL53L0X_StaticInit(pMyDevice); // Device Initialization
         // StaticInit will set interrupt by default
     }
     if(Status == VL53L0X_ERROR_NONE)
@@ -81,16 +87,14 @@ void TSK_Proximity()
     }
 
 /////END CALIBRATION///////////////////////////////
-	
+
 	while(Stop_TSKS == 'N' && Interface_END == 'N')
 	{
 		if(Status == VL53L0X_ERROR_NONE)
 		{
-			int Proximity=0, sumProximity=0, subProximity=0;
-			uint32_t measurement;
-			uint32_t no_of_measurements = 5;
-
-			uint16_t* pResults = (uint16_t*)malloc(sizeof(uint16_t) * no_of_measurements);
+			sumProximity = 0;
+			subProximity = 0;
+			pResults = (uint16_t*)malloc(sizeof(uint16_t) * no_of_measurements);
 
 			for(measurement=0; measurement<no_of_measurements; measurement++)
 			{
@@ -113,12 +117,10 @@ void TSK_Proximity()
 				}
 			}
 			Proximity = sumProximity/5;
-			
 			free(pResults);
-		}      
-    }
+		}
+        }
 
-    
     if(Status == VL53L0X_ERROR_NONE)
     {
 //        printf ("Call of VL53L0X_StopMeasurement\n");
@@ -136,7 +138,7 @@ void TSK_Proximity()
 		VL53L0X_REG_SYSTEM_INTERRUPT_GPIO_NEW_SAMPLE_READY);
 
     TSK_Proximity_Stop_Flag = 1;
-	TSK_Proximity_Init = 0;
+    TSK_Proximity_Init = 0;
 
 }
 
