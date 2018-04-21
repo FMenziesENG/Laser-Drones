@@ -5,7 +5,7 @@ TARGET = Drone_Start
 
 INC = -lwiringPi -LTSK_Motors -LTSK_Proximity -LTSK_Stop -LTSK_Interface -LMotor_Control
 
-Proj_Dir = /home/pi/Laser-Drones/LaserDrones_Rev2
+Proj_Dir = /home/tx/Git_stuff/Laser-Drones/LaserDrones_Rev2
 
 INCLUDES = \
 	-I$(Proj_Dir) \
