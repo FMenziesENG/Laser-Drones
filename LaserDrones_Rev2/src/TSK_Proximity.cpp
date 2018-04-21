@@ -71,7 +71,7 @@ void TSK_Proximity()
     {
 
 //        printf ("Call of VL53L0X_SetDeviceMode\n");
-        Status = VL53L0X_SetDeviceMode(pMyDevice, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING); // Setup in single ranging mode
+        Status = VL53L0X_SetDeviceMode(pMyDevice, VL53L0X_DEVICEMODE_CONTINUOUS_RANGING); // Setup in continuous ranging mode
     }
 
     if(Status == VL53L0X_ERROR_NONE)
@@ -113,11 +113,9 @@ void TSK_Proximity()
 				}
 			}
 			Proximity = sumProximity/5;
-			return Proximity;
-		
-		}    
-
-        free(pResults);
+			
+			free(pResults);
+		}      
     }
 
     
