@@ -8,6 +8,12 @@
 int Proximity;
 int TSK_Proximity_Stop_Flag = 1;
 
+//Local Functions
+void TSK_Proximity();
+//Used for Sensor API
+VL53L0X_Error WaitMeasurementDataReady(VL53L0X_DEV Dev);
+VL53L0X_Error WaitStopCompleted(VL53L0X_DEV Dev);
+
 
 void TSK_Proximity()
 {
