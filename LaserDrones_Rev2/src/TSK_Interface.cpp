@@ -163,8 +163,8 @@ void TSK_Interface()
 		else
 		{
 		//Print Data to screen, if data changes then change message to write
-			printw(
-			"------------Setup-------------\n"
+			/*printw(
+			"------------Drone-------------\n"
 			"------------TSK_Stop----------\n"
 			"TSK_Stop: %s\n"
 			"wiring_PiSetup: %s\n"
@@ -217,6 +217,48 @@ void TSK_Interface()
 				Pitch,
 				Yaw,
 				print_Init(TSK_Camera_Init)
+			);*/
+			printw(
+			"//////////////////////////////////////\n"
+			"--------Drone Control Interface-------\n"
+			"//////////////////////////////////////\n"
+			"---------------Motors-----------------\n"
+			"Motors System Status: %s\n"
+			"Selected Motors: %s\n"
+			"Motor 1 PWM: %i\n"
+			"Motor 2 PWM: %i\n"
+			"Motor 3 PWM: %i\n"
+			"Motor 4 PWM: %i\n"
+			"Motor 5 PWM: %i\n"
+			"Motor 6 PWM: %i\n"
+			"Motor 7 PWM: %i\n"
+			"Motor 8 PWM: %i\n"
+			"------------TSK_IMU-----------\n"
+			"TSK_IMU: %s\n"
+			"Roll: %f\n"
+			"Pitch: %f\n"
+			"Yaw: %f\n"
+			"------------TSK_Proximity-----\n"
+			"TSK_Proximity: %s\n"
+			"Height: %i\n"
+			,
+				print_Init(TSK_Motors_Init),
+				Selected_Motors.Name,
+				Selected_Motors.Setting,
+				PWMs.getPWM(1),
+				PWMs.getPWM(2),
+				PWMs.getPWM(3),
+				PWMs.getPWM(4),
+				PWMs.getPWM(9),
+				PWMs.getPWM(10),
+				PWMs.getPWM(11),
+				PWMs.getPWM(12),
+				print_Init(TSK_IMU_Init),
+				Roll,
+				Pitch,
+				Yaw,
+				print_Init(TSK_Proximity_Init),
+				Proximity,
 			);
 		}
 	}

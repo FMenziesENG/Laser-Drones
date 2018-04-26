@@ -9,28 +9,38 @@ Motors No_Motors = {
 };
 
 Motors Up_Motors = {
-	"Up Motors Selected",
+	"Up",
 	Init_PWM,
 	Up_Motors_Channels
 };
 
-
 Motors Down_Motors = {
-	"Down Motors Selected",
+	"Down",
 	Init_PWM,
 	Down_Motors_Channels
 };
 
+Motors Forward_Motors = {
+	"Forwards",
+	Init_PWM,
+	Forward_Motors_Channels
+};
+
+Motors Backward_Motors = {
+	"Backward",
+	Init_PWM,
+	Backward_Motors_Channels
+};
 
 Motors Clockwise_Motors = {
-	"Clockwise Motors Selected",
+	"Right",
 	Init_PWM,
 	Clockwise_Motors_Channels
 };
 
 
 Motors Anticlockwise_Motors = {
-	"Anticlockwise Motors Selected",
+	"Left",
 	Init_PWM,
 	Anticlockwise_Motors_Channels
 };
@@ -89,15 +99,15 @@ Motors Old_Motors = Selected_Motors;
 Motors Cal_Selected_Motor = No_Motors;
 
 //Array of Motor Settings Structs
-Motors Motor_Choices[5] = {No_Motors, Up_Motors, Down_Motors, Clockwise_Motors, Anticlockwise_Motors};
-
+//Motors Motor_Choices[5] = {No_Motors, Up_Motors, Down_Motors, Clockwise_Motors, Anticlockwise_Motors};
+Motors Motor_Choices[7] = {No_Motors, Up_Motors, Down_Motors, Clockwise_Motors, Anticlockwise_Motors, Forward_Motors, Backward_Motors};
 //Calibration Motor_Choices
 Motors Motor_Cal_Choices[13]= {No_Motors, Channel_1_Motor, Channel_2_Motor, Channel_3_Motor, Channel_4_Motor,
 			      No_Motors, No_Motors, No_Motors, No_Motors,
 			      Channel_9_Motor, Channel_10_Motor, Channel_11_Motor, Channel_12_Motor};
 
 //Motor Control Function Declarations
-
+/*
 Motors Get_Motors(char input)
 {
 	switch(input)
@@ -123,8 +133,47 @@ Motors Get_Motors(char input)
 
 	return Motor_Choices[Sel];
 }
+*/
 
+Motors Get_Motors(char input)
+{
+	switch(input)
+	{
+		case 'w':	//Select Forward Control
+			Sel = 5;
+			break;
+		case 'a':	//Select Left/Anticlockwise Control
+			Sel = 3;
+			break;
+		case 'd':	//Select Right/Clockwise
+			Sel = 4;
+			break;
+		case 's':	//Select Backward Control
+			Sel = 6;
+			break;
+		case 'o':	//Select Up Control
+			Sel = 1;
+			break;
+		case 'l':	//Select Up Control
+			Sel = 1;
+			break;
+		case 'i':	//Select Up Control
+			Sel = 1;
+			break;
+		case 'k':	//Select Up Control
+			Sel = 1;
+			break;
+		case'n':	//Select Nothing
+			Sel = 0;
+			break;
+		default:
+			return Selected_Motors;
+	}
 
+	return Motor_Choices[Sel];
+}
+
+/*
 void Get_Motor_Setting(char input)
 {
 
@@ -135,6 +184,48 @@ void Get_Motor_Setting(char input)
 	if(input == 'o')
 	{
 		Selected_Motors.Setting -= 30;
+	}
+}
+*/
+
+void Get_Motor_Setting(char input)
+{
+
+	if(input == 'w')
+	{
+		Backward_Motors.setting = 230;
+		Selected_Motors.Setting += 5;
+	}else
+	if(input == 's')
+	{
+		Forward_Motors.setting = 230;
+		Selected_Motors.Setting += 5;
+	}else
+	if(input == 'a')
+	{
+		Clockwise_Motors.setting = 230;
+		Selected_Motors.Setting += 5;
+	}else
+	if(input == 'd')
+	{
+		Anticlockwise_Motors.setting = 230;
+		Selected_Motors.Setting += 5;
+	}else
+	if(input == 'i')
+	{
+		Selected_Motors.Setting += 1;
+	}else
+	if(input == 'k')
+	{
+		Selected_Motors.Setting -= 1;
+	}else
+	if(input == 'o')
+	{
+		Selected_Motors.Setting += 10;
+	}else
+	if(input == 'l')
+	{
+		Selected_Motors.Setting -= 10;
 	}
 }
 

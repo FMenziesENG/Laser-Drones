@@ -10,6 +10,8 @@
 #define Down_Motors_Channels          0b001100000000
 #define Clockwise_Motors_Channels     0b000000001100
 #define Anticlockwise_Motors_Channels 0b000000000011
+#define Right_Motors_Channels         0b000000001001
+#define Left_Motors_Channels          0b000000000110
 
 #define Channel_1  0b000000000001
 #define Channel_2  0b000000000010
@@ -41,7 +43,7 @@ struct Motors
 	uint16_t Driver_Channels;
 };
 
-extern Motors Motor_Choices[5];
+extern Motors Motor_Choices[7];
 extern Motors Motor_Cal_Choices[13];
 //---------------Motor Control Function Definitions--------------
 
